@@ -1,1303 +1,1122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chim Chill Coffee &amp; Food</title>
+    <title>Beechwoods Cafe | Murchison, New Zealand</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            50: '#f2f8f4',
+                            100: '#e1efe7',
+                            500: '#346b4c',
+                            700: '#234934',
+                            800: '#1b3a29',
+                            900: '#12261b',
+                        },
+                        amberwood: {
+                            50: '#fdf9f3',
+                            100: '#f9f1e3',
+                            400: '#d79e53',
+                            500: '#c58332',
+                            600: '#a76a23',
+                        },
+                        warmcream: '#FAF7F2',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap');
-        
-        :root {
-            --primary: #6B3E2F;
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FAF7F2;
+            color: #2D3748;
         }
-        
-        .tail-container {
-            font-family: 'Inter', system_ui, sans-serif;
+        .font-serif {
+            font-family: 'Playfair Display', serif;
         }
-        
-        .heading-font {
-            font-family: 'Playfair Display', sans-serif;
+        .hero-pattern {
+            background-image: radial-gradient(rgba(18, 38, 27, 0.75), rgba(18, 38, 27, 0.92)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
         }
-
-        .hero-bg {
-            background: linear-gradient(rgba(107, 62, 47, 0.75), rgba(107, 62, 47, 0.85)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
-
-        .nav-link {
-            position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .dark-glass {
+            background: rgba(18, 38, 27, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
-        
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #d97757;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
         }
-        
-        .nav-link:hover:after {
-            width: 100%;
-        }
-
-        .menu-card {
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        
-        .menu-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px -12px rgb(107 62 47);
-        }
-
-        .coffee-bean {
-            animation: bean-fall 15s linear infinite;
-        }
-
-        @keyframes bean-fall {
-            0% { transform: translateY(-100px) rotate(0deg); }
-            100% { transform: translateY(800px) rotate(720deg); }
-        }
-
-        .section-header {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-header:after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(to right, #d97757, #f5c8a8);
-            bottom: -6px;
-            left: 20%;
-        }
-
-        .review-card {
-            transition: all 0.3s ease;
-        }
-        
-        .review-card:hover {
-            transform: scale(1.02);
-        }
-
-        .photo-grid img {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .photo-grid img:hover {
-            transform: scale(1.1);
-            filter: brightness(1.15);
-        }
-
-        .latte-art {
-            position: relative;
-        }
-        
-        .latte-art::before {
-            content: '';
-            position: absolute;
-            top: 30%;
-            left: 35%;
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle, #f5e8d3 0%, transparent 70%);
-            opacity: 0.25;
-            border-radius: 50%;
-            animation: steam 3s ease-in-out infinite;
-        }
-
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(to right, #6B3E2F, #d97757);
-            z-index: 50;
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 2px 10px;
-            background: #f3e9e0;
-            color: #6B3E2F;
-            font-size: 10px;
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d79e53;
             border-radius: 9999px;
-            font-weight: 600;
         }
     </style>
 </head>
-<body class="tail-container text-[#3F2A22] bg-[#f9f4eb] overflow-x-hidden">
-    <!-- progress bar -->
-    <div id="progress-bar" class="scroll-progress w-0"></div>
+<body class="antialiased overflow-x-hidden selection:bg-amberwood-400 selection:text-white">
 
-    <!-- NAVBAR -->
-    <nav class="bg-white border-b border-[#e8d9c7] shadow-sm fixed w-full z-50">
-        <div class="max-w-screen-2xl mx-auto">
-            <div class="px-8 py-5 flex items-center justify-between">
-                <!-- logo -->
-                <div class="flex items-center gap-x-3">
-                    <div class="w-10 h-10 bg-[#6B3E2F] rounded-2xl flex items-center justify-center shadow-inner">
-                        <i class="fa-solid fa-mug-hot text-[#f5d9b0] text-2xl"></i>
-                    </div>
-                    <div>
-                        <span class="heading-font text-3xl font-bold tracking-tighter text-[#6B3E2F]">chim chill</span>
-                    </div>
-                </div>
-
-                <!-- desktop menu -->
-                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                    <a href="#overview" onclick="smoothScrollTo('overview')" class="nav-link text-[#6B3E2F]">OVERVIEW</a>
-                    <a href="#menu" onclick="smoothScrollTo('menu')" class="nav-link text-[#6B3E2F]">MENU</a>
-                    <a href="#reviews" onclick="smoothScrollTo('reviews')" class="nav-link text-[#6B3E2F]">REVIEWS</a>
-                    <a href="#photos" onclick="smoothScrollTo('photos')" class="nav-link text-[#6B3E2F]">PHOTOS</a>
-                    <a href="#about" onclick="smoothScrollTo('about')" class="nav-link text-[#6B3E2F]">ABOUT</a>
-                </div>
-
-                <div class="flex items-center gap-x-6">
-                    <div onclick="toggleCart()" 
-                         class="relative cursor-pointer flex items-center justify-center w-9 h-9 hover:bg-[#f5e8d3] rounded-2xl transition-colors">
-                        <i class="fa-solid fa-cart-shopping text-[#6B3E2F]"></i>
-                        <span id="cart-count" 
-                              class="absolute -top-1 -right-1 bg-[#d97757] text-white text-[10px] font-mono w-5 h-5 flex items-center justify-center rounded-full">0</span>
-                    </div>
-                    
-                    <button onclick="showContactModal()"
-                            class="px-6 py-2.5 bg-[#6B3E2F] hover:bg-[#5a3528] transition-all text-white text-sm font-semibold rounded-3xl flex items-center gap-x-2 shadow-md">
-                        <i class="fa-solid fa-phone"></i>
-                        <span>CONTACT</span>
-                    </button>
-                    
-                    <!-- mobile menu button -->
-                    <button onclick="toggleMobileMenu()" 
-                            class="md:hidden w-10 h-10 flex items-center justify-center text-2xl text-[#6B3E2F]">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-                </div>
+    <!-- Top Announcement Bar -->
+    <div class="bg-forest-900 text-amberwood-100 text-xs sm:text-sm py-2 px-4 border-b border-forest-800">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-500/20 text-red-300 border border-red-500/30">
+                    <span class="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
+                    Currently Closed
+                </span>
+                <span class="text-gray-300">Opens at 8:30 AM</span>
+                <span class="hidden md:inline text-forest-500">|</span>
+                <span class="hidden md:flex items-center gap-1 text-gray-300">
+                    <i class="fa-solid fa-tag text-amberwood-400"></i> Avg. $10–20 per person
+                </span>
             </div>
-        </div>
-        
-        <!-- MOBILE MENU -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t py-4 px-6">
-            <div class="flex flex-col gap-y-6 text-lg">
-                <a href="#overview" onclick="toggleMobileMenu();smoothScrollTo('overview')" class="py-2 border-b border-[#f0e4d3]">Overview</a>
-                <a href="#menu" onclick="toggleMobileMenu();smoothScrollTo('menu')" class="py-2 border-b border-[#f0e4d3]">Menu</a>
-                <a href="#reviews" onclick="toggleMobileMenu();smoothScrollTo('reviews')" class="py-2 border-b border-[#f0e4d3]">Reviews</a>
-                <a href="#photos" onclick="toggleMobileMenu();smoothScrollTo('photos')" class="py-2 border-b border-[#f0e4d3]">Photos</a>
-                <a href="#about" onclick="toggleMobileMenu();smoothScrollTo('about')" class="py-2">About Us</a>
-                
-                <div class="pt-4 flex flex-col gap-y-4">
-                    <div class="flex items-center justify-between text-sm">
-                        <div class="flex items-center gap-x-3">
-                            <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                            <span class="font-medium text-green-700">OPEN TODAY</span>
-                        </div>
-                        <span class="font-mono text-xs text-[#8a6645]">until 3:30 PM</span>
-                    </div>
-                    <a href="tel:+66846663990" 
-                       class="flex items-center gap-x-3 text-[#6B3E2F]">
-                        <i class="fa-solid fa-phone text-xl"></i>
-                        <div>
-                            <div class="text-xs tracking-widest">CALL US</div>
-                            <div class="font-semibold">+66 84 666 3990</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <header id="overview" class="hero-bg h-screen flex items-center relative">
-        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 pt-20">
-            <div class="max-w-2xl">
-                <div class="inline-flex items-center gap-x-2 bg-white/90 text-[#6B3E2F] text-xs font-semibold tracking-[1px] px-5 h-7 rounded-3xl mb-6 shadow">
-                    <i class="fa-solid fa-star text-amber-400"></i>
-                    <span>CHIANG MAI, THAILAND</span>
-                </div>
-                
-                <h1 class="heading-font text-7xl md:text-8xl font-bold leading-none text-white drop-shadow-md">
-                    CHIM<br>CHILL
-                </h1>
-                
-                <p class="mt-4 text-[#f5d9b0] text-2xl font-light tracking-tight">
-                    Coffee &amp; Food
-                </p>
-                
-                <div class="mt-10 flex items-center gap-x-8">
-                    <div class="flex items-center">
-                        <div class="flex -space-x-4">
-                            <div class="w-7 h-7 bg-[#f5c8a8] border-2 border-white rounded-2xl flex items-center justify-center text-xs">☕</div>
-                            <div class="w-7 h-7 bg-[#e8b88c] border-2 border-white rounded-2xl flex items-center justify-center text-xs">🥐</div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div class="flex items-center gap-x-1 text-amber-300">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <div class="text-white text-sm flex items-center gap-x-3">
-                            <span class="font-semibold text-3xl">4.9</span>
-                            <span class="opacity-75">• 64 reviews</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-16 flex flex-wrap gap-4">
-                    <button onclick="smoothScrollTo('menu')" 
-                            class="px-10 py-6 bg-white text-[#6B3E2F] rounded-3xl font-semibold flex items-center gap-x-3 hover:shadow-2xl transition-all active:scale-95">
-                        <span>BROWSE MENU</span>
-                        <i class="fa-solid fa-arrow-down text-lg"></i>
-                    </button>
-                    
-                    <button onclick="showLocationModal()" 
-                            class="px-8 py-6 border border-white/70 text-white rounded-3xl font-medium flex items-center gap-x-3 hover:bg-white/10 transition-all">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>VISIT US</span>
-                    </button>
-                </div>
-                
-                <div class="mt-12 text-white/80 text-xs flex items-center gap-x-8">
-                    <div class="flex items-center gap-x-2">
-                        <div class="px-3 py-1 bg-white/20 rounded-3xl flex items-center">
-                            <i class="fa-solid fa-clock text-xs mr-2"></i>
-                            <span>8:00 AM - 3:30 PM</span>
-                        </div>
-                    </div>
-                    <div>฿1 — ฿200 / person</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- floating badges -->
-        <div class="hidden lg:flex absolute bottom-12 right-12 bg-white rounded-3xl shadow-xl p-5 max-w-[220px]">
-            <div class="flex gap-x-5 items-center">
-                <div class="w-14 h-14 bg-[#f3e4d0] rounded-2xl flex items-center justify-center text-4xl">🌿</div>
-                <div>
-                    <div class="text-[#6B3E2F] font-semibold text-lg leading-none">Freshly roasted</div>
-                    <div class="text-[#8a6645] text-sm">daily in-house</div>
-                    <div class="h-px bg-[#e8d5b8] my-3"></div>
-                    <div class="flex items-center text-xs text-[#6B3E2F]">
-                        <div class="tag">ETHIOPIA</div>
-                        <div class="tag ml-2">GUATEMALA</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- decorative coffee beans -->
-        <div class="absolute top-20 right-12 text-[#d9b38a] text-6xl opacity-10 coffee-bean" style="animation-delay: 0s;">☕</div>
-        <div class="absolute top-52 left-1/3 text-[#d9b38a] text-5xl opacity-10 coffee-bean" style="animation-delay: 4s;">🫘</div>
-        <div class="absolute bottom-40 right-1/4 text-[#d9b38a] text-7xl opacity-10 coffee-bean" style="animation-delay: 8s;">☕</div>
-
-        <!-- status bar -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-white/90 text-[#6B3E2F] text-[10px] font-mono flex items-center gap-x-5 px-8 h-8 rounded-3xl shadow-inner">
-            <div class="flex items-center gap-x-1.5">
-                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                <span class="uppercase tracking-widest text-emerald-700 text-xs">NOW OPEN</span>
-            </div>
-            <div class="w-px h-3 bg-[#d4b89a]"></div>
-            <span class="text-[#8a6645]">Closes at 3:30pm</span>
-        </div>
-
-        <div onclick="smoothScrollTo('menu')" 
-             class="absolute bottom-10 right-10 flex flex-col items-center cursor-pointer group">
-            <div class="text-[10px] font-medium tracking-widest text-white/70 group-active:text-white">MENU</div>
-            <i class="fa-solid fa-chevron-down text-white text-3xl animate-bounce"></i>
-        </div>
-    </header>
-
-    <!-- STATS BAR -->
-    <div class="bg-[#6B3E2F] py-5 text-white">
-        <div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-3 md:grid-cols-6 gap-8 text-center text-xs">
-            <div>
-                <div class="text-[#d9b38a] text-[22px] font-light">4.9</div>
-                <div class="uppercase text-[#c9a17e] text-[10px] tracking-[0.5px]">Rating</div>
-            </div>
-            <div>
-                <div class="text-[#d9b38a] text-[22px] font-light">64</div>
-                <div class="uppercase text-[#c9a17e] text-[10px] tracking-[0.5px]">Reviews</div>
-            </div>
-            <div>
-                <div class="text-[#d9b38a] text-[22px] font-light">38</div>
-                <div class="uppercase text-[#c9a17e] text-[10px] tracking-[0.5px]">Suthep</div>
-            </div>
-            <div>
-                <div class="text-[#d9b38a] text-[22px] font-light">8AM</div>
-                <div class="uppercase text-[#c9a17e] text-[10px] tracking-[0.5px]">Opens</div>
-            </div>
-            <div>
-                <div class="text-[#d9b38a] text-[22px] font-light">3:30PM</div>
-                <div class="uppercase text-[#c9a17e] text-[10px] tracking-[0.5px]">Closes</div>
-            </div>
-            <div>
-                <div class="text-[#d9b38a] text-[22px] font-light">฿85</div>
-                <div class="uppercase text-[#c9a17e] text-[10px] tracking-[0.5px]">Avg. spend</div>
+            <div class="flex items-center gap-4 text-xs font-medium">
+                <a href="tel:+6435239571" class="hover:text-amberwood-400 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-phone text-amberwood-400"></i> +64 3 523 9571
+                </a>
+                <span class="text-forest-700">•</span>
+                <span class="text-gray-300 hidden sm:inline"><i class="fa-solid fa-location-dot text-amberwood-400 mr-1"></i> Murchison 7007, NZ</span>
             </div>
         </div>
     </div>
 
-    <!-- MENU SECTION -->
-    <section id="menu" class="max-w-screen-2xl mx-auto px-6 py-20 bg-white">
-        <div class="flex justify-between items-end mb-12">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-warmcream/95 backdrop-blur-md border-b border-amberwood-100/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#overview" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-forest-800 text-amberwood-400 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-mug-hot text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-forest-900 block leading-tight">Beechwoods</span>
+                        <span class="text-[10px] tracking-[0.25em] text-amberwood-600 font-bold uppercase block">Cafe • Murchison</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center space-x-1 font-medium text-forest-800 text-sm">
+                    <a href="#overview" class="px-3.5 py-2 rounded-lg hover:text-amberwood-600 hover:bg-forest-50 transition">Overview</a>
+                    <a href="#menu" class="px-3.5 py-2 rounded-lg hover:text-amberwood-600 hover:bg-forest-50 transition">Menu</a>
+                    <a href="#photos" class="px-3.5 py-2 rounded-lg hover:text-amberwood-600 hover:bg-forest-50 transition">Photos</a>
+                    <a href="#reviews" class="px-3.5 py-2 rounded-lg hover:text-amberwood-600 hover:bg-forest-50 transition">Reviews</a>
+                    <a href="#about" class="px-3.5 py-2 rounded-lg hover:text-amberwood-600 hover:bg-forest-50 transition">About</a>
+                    <a href="#by-owner" class="px-3.5 py-2 rounded-lg hover:text-amberwood-600 hover:bg-forest-50 transition">From Owner</a>
+                    <a href="#location" class="px-3.5 py-2 rounded-lg hover:text-amberwood-600 hover:bg-forest-50 transition">Location</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="tel:+6435239571" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-forest-800 text-forest-800 text-sm font-semibold hover:bg-forest-800 hover:text-white transition shadow-sm">
+                        <i class="fa-solid fa-phone"></i>
+                        Call Cafe
+                    </a>
+                    <a href="#menu" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-forest-800 text-amberwood-400 text-sm font-semibold hover:bg-forest-700 transition shadow-md shadow-forest-900/10 hover:shadow-lg">
+                        Explore Menu
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg text-forest-900 hover:bg-forest-100 focus:outline-none" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="lg:hidden hidden border-t border-forest-100 bg-warmcream px-4 pt-3 pb-6 space-y-2 shadow-xl">
+            <a href="#overview" class="block px-3 py-2 rounded-lg text-forest-800 font-medium hover:bg-forest-50 mobile-link">Overview</a>
+            <a href="#menu" class="block px-3 py-2 rounded-lg text-forest-800 font-medium hover:bg-forest-50 mobile-link">Menu</a>
+            <a href="#photos" class="block px-3 py-2 rounded-lg text-forest-800 font-medium hover:bg-forest-50 mobile-link">Photos</a>
+            <a href="#reviews" class="block px-3 py-2 rounded-lg text-forest-800 font-medium hover:bg-forest-50 mobile-link">Reviews</a>
+            <a href="#about" class="block px-3 py-2 rounded-lg text-forest-800 font-medium hover:bg-forest-50 mobile-link">About</a>
+            <a href="#by-owner" class="block px-3 py-2 rounded-lg text-forest-800 font-medium hover:bg-forest-50 mobile-link">From Owner</a>
+            <a href="#location" class="block px-3 py-2 rounded-lg text-forest-800 font-medium hover:bg-forest-50 mobile-link">Location & Contact</a>
+            <div class="pt-4 flex flex-col gap-2">
+                <a href="tel:+6435239571" class="w-full text-center py-2.5 rounded-xl bg-forest-800 text-amberwood-400 font-semibold text-sm">
+                    <i class="fa-solid fa-phone mr-2"></i> +64 3 523 9571
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO / OVERVIEW SECTION -->
+    <section id="overview" class="relative hero-pattern text-white min-h-[85vh] flex items-center justify-center py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Left Hero Content -->
+                <div class="lg:col-span-7 space-y-6 text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-white/10 backdrop-blur-md border border-white/20 text-amberwood-300">
+                        <i class="fa-solid fa-mountain-sun"></i> Heart of Buller Gorge Gateway • Murchison, NZ
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
+                        Fresh Fare, Warm Brews & <span class="italic text-amberwood-400 font-normal">Alpine Hospitality.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-gray-200 max-w-xl font-light leading-relaxed">
+                        The beloved roadside haven for travelers, locals, and adventurers passing through Waller Street. Renowned for artisan coffee, gourmet cabinet food, hearty Kiwi breakfasts, and welcoming smiles.
+                    </p>
+
+                    <!-- Trust Badges Bar -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <!-- Rating Badge -->
+                        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/15">
+                            <div class="flex items-center text-amber-400 text-base">
+                                <i class="fa-solid fa-star"></i>
+                                <span class="font-bold text-white text-lg ml-1.5">3.7</span>
+                            </div>
+                            <div class="text-left leading-tight border-l border-white/20 pl-3">
+                                <p class="text-xs font-semibold text-white">705 Google Reviews</p>
+                                <p class="text-[11px] text-gray-300">Popular Highway Pitstop</p>
+                            </div>
+                        </div>
+
+                        <!-- Price Badge -->
+                        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/15">
+                            <i class="fa-solid fa-wallet text-amberwood-400 text-xl"></i>
+                            <div class="leading-tight">
+                                <span class="text-xs text-gray-300 block">Price Range</span>
+                                <span class="font-bold text-white text-sm">$10–$20 per person</span>
+                            </div>
+                        </div>
+
+                        <!-- Community Verified -->
+                        <div class="flex items-center gap-2 bg-emerald-950/60 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-emerald-400/30">
+                            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                            <span class="text-xs font-medium text-emerald-200">Recommended by <strong>108+ travelers</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Call to action buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-4">
+                        <a href="#menu" class="px-7 py-3.5 rounded-xl bg-amberwood-500 hover:bg-amberwood-400 text-forest-950 font-bold transition duration-200 shadow-lg shadow-black/30 flex items-center gap-2">
+                            <i class="fa-solid fa-utensils"></i> View Today's Menu
+                        </a>
+                        <a href="#location" class="px-6 py-3.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-semibold backdrop-blur-sm border border-white/30 transition flex items-center gap-2">
+                            <i class="fa-solid fa-map-location-dot text-amberwood-400"></i> Directions & Hours
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Quick Info Card -->
+                <div class="lg:col-span-5">
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 text-forest-900 shadow-2xl border border-white/60 relative overflow-hidden">
+                        <div class="absolute -right-8 -top-8 w-28 h-28 bg-amberwood-400/20 rounded-full blur-xl pointer-events-none"></div>
+
+                        <div class="flex items-center justify-between border-b border-gray-200/80 pb-4 mb-5">
+                            <div>
+                                <span class="text-xs uppercase font-bold tracking-wider text-forest-600">Live Status</span>
+                                <div class="flex items-center gap-2 mt-0.5">
+                                    <span class="w-3 h-3 rounded-full bg-red-500 ring-4 ring-red-100"></span>
+                                    <span class="font-bold text-lg text-forest-950">Currently Closed</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-gray-500">Next Service</span>
+                                <p class="text-sm font-bold text-amberwood-600">Opens 8:30 AM</p>
+                            </div>
+                        </div>
+
+                        <!-- Info Rows -->
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-9 h-9 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-forest-950">Address</h4>
+                                    <p class="text-gray-600 text-xs sm:text-sm">32 Waller Street, Murchison 7007, New Zealand</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-9 h-9 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-forest-950">Phone Order / Inquiries</h4>
+                                    <a href="tel:+6435239571" class="text-amberwood-600 font-semibold hover:underline">+64 3 523 9571</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-9 h-9 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-dollar-sign"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-forest-950">Budget Friendly</h4>
+                                    <p class="text-gray-600 text-xs">Typical spend: $10 – $20 per person</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-9 h-9 rounded-xl bg-forest-100 text-forest-700 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-forest-950">Opening Hours</h4>
+                                    <p class="text-gray-600 text-xs">Mon – Sun: 8:30 AM – 4:00 PM (Daily)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Amenities -->
+                        <div class="mt-6 pt-5 border-t border-gray-200/80">
+                            <p class="text-xs uppercase font-bold text-gray-500 mb-2 tracking-wider">Cafe Features</p>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="px-2.5 py-1 bg-forest-50 text-forest-800 rounded-lg font-medium">🌿 Outdoor Garden</span>
+                                <span class="px-2.5 py-1 bg-forest-50 text-forest-800 rounded-lg font-medium">☕ Specialty Roasts</span>
+                                <span class="px-2.5 py-1 bg-forest-50 text-forest-800 rounded-lg font-medium">🥧 Famous Kiwi Pies</span>
+                                <span class="px-2.5 py-1 bg-forest-50 text-forest-800 rounded-lg font-medium">🚗 Highway Parking</span>
+                                <span class="px-2.5 py-1 bg-forest-50 text-forest-800 rounded-lg font-medium">🐾 Dog Friendly</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK HIGHLIGHT METRICS -->
+    <section class="relative -mt-6 z-20 max-w-6xl mx-auto px-4">
+        <div class="bg-white rounded-2xl shadow-xl border border-amberwood-100 p-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="border-r border-gray-100 last:border-0 pr-2">
+                <span class="font-serif text-3xl font-bold text-forest-900 block">3.7 ★</span>
+                <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">705+ Reviews</span>
+            </div>
+            <div class="border-r border-gray-100 last:border-0 pr-2">
+                <span class="font-serif text-3xl font-bold text-amberwood-600 block">$10-20</span>
+                <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">Affordable Range</span>
+            </div>
+            <div class="border-r border-gray-100 last:border-0 pr-2">
+                <span class="font-serif text-3xl font-bold text-forest-900 block">108+</span>
+                <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">Community Saves</span>
+            </div>
             <div>
-                <span class="px-4 py-1 bg-[#f5e8d3] text-[#6B3E2F] text-xs font-semibold rounded-3xl">MENU</span>
-                <h2 class="heading-font text-5xl font-semibold text-[#3F2A22] mt-3">Our Favorites</h2>
-            </div>
-            
-            <div onclick="viewFullMenu()" 
-                 class="hidden sm:flex items-center text-sm font-medium cursor-pointer hover:text-[#d97757]">
-                FULL MENU 
-                <span class="ml-2 text-xl leading-none">→</span>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- menu item 1 -->
-            <div onclick="addToCart(this)" class="menu-card bg-white border border-[#f0e4d3] rounded-3xl overflow-hidden cursor-pointer group">
-                <div class="h-56 bg-[#f8eede] flex items-center justify-center relative latte-art">
-                    <img src="https://picsum.photos/id/201/600/600" alt="Avocado toast" 
-                         class="h-44 w-44 object-cover rounded-3xl shadow-md group-active:scale-95 transition-transform">
-                    <div class="absolute top-6 right-6 bg-white text-[#6B3E2F] text-xs px-3 py-1 rounded-3xl shadow font-semibold">฿140</div>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between">
-                        <div class="font-semibold">Avocado Sourdough</div>
-                    </div>
-                    <div class="text-xs text-[#8a6645] mt-1">Smashed avocado, cherry tomatoes, poached egg, chili flakes</div>
-                    <div class="mt-4 flex gap-x-2">
-                        <div class="tag text-[10px]">VEG</div>
-                        <div class="tag text-[10px]">BRUNCH</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- menu item 2 -->
-            <div onclick="addToCart(this)" class="menu-card bg-white border border-[#f0e4d3] rounded-3xl overflow-hidden cursor-pointer group">
-                <div class="h-56 bg-[#f8eede] flex items-center justify-center relative">
-                    <img src="https://picsum.photos/id/292/600/600" alt="Iced latte" 
-                         class="h-48 w-36 object-cover rounded-3xl rotate-12 shadow-md group-active:scale-95 transition-transform">
-                    <div class="absolute top-6 right-6 bg-white text-[#6B3E2F] text-xs px-3 py-1 rounded-3xl shadow font-semibold">฿95</div>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between">
-                        <div class="font-semibold">Oat Milk Latte</div>
-                    </div>
-                    <div class="text-xs text-[#8a6645] mt-1">Ethiopian single origin, house made oat milk, cinnamon dusting</div>
-                    <div class="mt-4 flex gap-x-2">
-                        <div class="tag text-[10px]">VEGAN</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- menu item 3 -->
-            <div onclick="addToCart(this)" class="menu-card bg-white border border-[#f0e4d3] rounded-3xl overflow-hidden cursor-pointer group">
-                <div class="h-56 bg-[#f8eede] flex items-center justify-center relative">
-                    <img src="https://picsum.photos/id/312/600/600" alt="Matcha croissant" 
-                         class="h-40 w-40 object-cover rounded-3xl shadow-md group-active:scale-95 transition-transform">
-                    <div class="absolute top-6 right-6 bg-white text-[#6B3E2F] text-xs px-3 py-1 rounded-3xl shadow font-semibold">฿120</div>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between">
-                        <div class="font-semibold">Matcha Croissant</div>
-                    </div>
-                    <div class="text-xs text-[#8a6645] mt-1">Flaky butter croissant, ceremonial matcha cream, pistachio crumble</div>
-                    <div class="mt-4 flex gap-x-2">
-                        <div class="tag text-[10px]">SWEET</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- menu item 4 -->
-            <div onclick="addToCart(this)" class="menu-card bg-white border border-[#f0e4d3] rounded-3xl overflow-hidden cursor-pointer group">
-                <div class="h-56 bg-[#f8eede] flex items-center justify-center relative">
-                    <img src="https://picsum.photos/id/431/600/600" alt="Banana bread" 
-                         class="h-44 w-44 object-cover rounded-3xl shadow-md group-active:scale-95 transition-transform">
-                    <div class="absolute top-6 right-6 bg-white text-[#6B3E2F] text-xs px-3 py-1 rounded-3xl shadow font-semibold">฿85</div>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between">
-                        <div class="font-semibold">Banana Walnut Bread</div>
-                    </div>
-                    <div class="text-xs text-[#8a6645] mt-1">Served warm with whipped honey butter</div>
-                    <div class="mt-4 flex gap-x-2">
-                        <div class="tag text-[10px]">BAKED</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-16 text-center">
-            <button onclick="viewFullMenu()" 
-                    class="inline-flex items-center px-8 h-12 bg-[#f5e8d3] hover:bg-[#e9d4b8] text-[#6B3E2F] font-medium rounded-3xl text-sm transition-colors">
-                SEE ENTIRE MENU 
-                <i class="ml-4 fa-solid fa-chevron-right text-xs"></i>
-            </button>
-        </div>
-    </section>
-
-    <!-- DIVIDER -->
-    <div class="h-px bg-gradient-to-r from-transparent via-[#d4b89a] to-transparent"></div>
-
-    <!-- REVIEWS SECTION -->
-    <section id="reviews" class="max-w-screen-2xl mx-auto px-6 py-20 bg-[#f9f4eb]">
-        <div class="flex flex-col lg:flex-row gap-16">
-            <!-- left column -->
-            <div class="lg:w-5/12">
-                <div class="sticky top-28">
-                    <span class="px-4 py-1 bg-[#6B3E2F] text-white text-xs font-semibold rounded-3xl">TESTIMONIALS</span>
-                    <h2 class="heading-font text-5xl font-semibold leading-none mt-4">What our<br>guests say</h2>
-                    
-                    <div class="mt-8 flex items-center gap-x-6">
-                        <div class="text-7xl font-light text-[#6B3E2F]">4.9</div>
-                        <div>
-                            <div class="flex text-[#f5b46c]">
-                                ★★★★☆
-                            </div>
-                            <div class="text-xs text-[#8a6645]">BASED ON 64 REVIEWS</div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-10 border border-[#e8d9c7] rounded-3xl p-8 bg-white">
-                        <div class="italic text-[#6B3E2F]">"Best flat white I've had in Chiang Mai. The staff is friendly and the atmosphere is perfect for working or just relaxing with friends."</div>
-                        <div class="mt-8 flex items-center gap-x-3">
-                            <div class="w-8 h-8 bg-[#d9b38a] rounded-2xl"></div>
-                            <div>
-                                <div class="text-xs font-medium">Sarah P.</div>
-                                <div class="text-[#8a6645] text-xs">2 days ago</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button onclick="showAllReviews()" 
-                            class="mt-6 text-sm font-medium flex items-center gap-x-2 text-[#6B3E2F]">
-                        <span>ALL REVIEWS</span> 
-                        <span class="text-xl">↗</span>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- reviews grid -->
-            <div class="lg:w-7/12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- review 1 -->
-                <div class="review-card bg-white p-7 rounded-3xl shadow-sm">
-                    <div class="flex justify-between items-start">
-                        <div class="flex items-center gap-x-3">
-                            <div class="w-9 h-9 bg-amber-200 text-amber-800 rounded-2xl flex items-center justify-center text-xl">🇹🇭</div>
-                            <div>
-                                <div class="font-semibold text-sm">Krit P.</div>
-                                <div class="text-xs text-gray-400">Local • 5 days ago</div>
-                            </div>
-                        </div>
-                        <div class="text-[#f5b46c] text-xl">★★★★★</div>
-                    </div>
-                    <p class="mt-6 text-sm leading-relaxed">"The pour-over is exceptional. I love that they change the single origin beans every week. Also the banana bread is addictive."</p>
-                    <div class="flex gap-x-2 mt-8">
-                        <div class="text-[10px] bg-[#f3e4d0] text-[#6B3E2F] px-3 py-1 rounded-3xl">☕ pour over</div>
-                    </div>
-                </div>
-                
-                <!-- review 2 -->
-                <div class="review-card bg-white p-7 rounded-3xl shadow-sm">
-                    <div class="flex justify-between items-start">
-                        <div class="flex items-center gap-x-3">
-                            <div class="w-9 h-9 bg-purple-200 text-purple-700 rounded-2xl flex items-center justify-center text-xl">🇬🇧</div>
-                            <div>
-                                <div class="font-semibold text-sm">Emma T.</div>
-                                <div class="text-xs text-gray-400">Tourist • 12 days ago</div>
-                            </div>
-                        </div>
-                        <div class="text-[#f5b46c] text-xl">★★★★☆</div>
-                    </div>
-                    <p class="mt-6 text-sm leading-relaxed">"Came here for breakfast every morning during my stay in Chiang Mai. The avocado toast is perfect and the iced matcha is so refreshing."</p>
-                    <div class="flex gap-x-2 mt-8">
-                        <div class="text-[10px] bg-[#f3e4d0] text-[#6B3E2F] px-3 py-1 rounded-3xl">🥑 brunch</div>
-                        <div class="text-[10px] bg-[#f3e4d0] text-[#6B3E2F] px-3 py-1 rounded-3xl">🌿 vegan options</div>
-                    </div>
-                </div>
-                
-                <!-- review 3 -->
-                <div class="review-card bg-white p-7 rounded-3xl shadow-sm">
-                    <div class="flex justify-between items-start">
-                        <div class="flex items-center gap-x-3">
-                            <div class="w-9 h-9 bg-rose-200 text-rose-700 rounded-2xl flex items-center justify-center text-xl">🇰🇷</div>
-                            <div>
-                                <div class="font-semibold text-sm">Ji-hoon K.</div>
-                                <div class="text-xs text-gray-400">2 weeks ago</div>
-                            </div>
-                        </div>
-                        <div class="text-[#f5b46c] text-xl">★★★★★</div>
-                    </div>
-                    <p class="mt-6 text-sm leading-relaxed">"Quiet corner with fast wifi. I worked here for 5 hours and ordered the cold brew which was super smooth. Will return tomorrow."</p>
-                </div>
-                
-                <!-- review 4 -->
-                <div class="review-card bg-white p-7 rounded-3xl shadow-sm">
-                    <div class="flex justify-between items-start">
-                        <div class="flex items-center gap-x-3">
-                            <div class="w-9 h-9 bg-blue-200 text-blue-700 rounded-2xl flex items-center justify-center text-xl">🇦🇺</div>
-                            <div>
-                                <div class="font-semibold text-sm">Liam F.</div>
-                                <div class="text-xs text-gray-400">1 month ago</div>
-                            </div>
-                        </div>
-                        <div class="text-[#f5b46c] text-xl">★★★★★</div>
-                    </div>
-                    <p class="mt-6 text-sm leading-relaxed">"Hidden gem near the university. The staff remembers my order after just two visits. The pastries are always fresh."</p>
-                    <div class="mt-8 text-xs flex items-center gap-x-4 text-[#8a6645]">
-                        <div class="flex items-center">
-                            <i class="fa-solid fa-heart mr-1"></i> 12
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PHOTOS SECTION -->
-    <section id="photos" class="max-w-screen-2xl mx-auto px-6 py-20 bg-white">
-        <div class="flex justify-between items-baseline mb-10">
-            <div class="heading-font text-5xl font-semibold">Moments at Chim Chill</div>
-            <a href="#" onclick="viewAllPhotos(); return false" 
-               class="text-xs flex items-center gap-x-2 hover:text-[#d97757]">
-                INSTAGRAM 
-                <i class="fa-brands fa-instagram text-base"></i>
-            </a>
-        </div>
-        
-        <div class="photo-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            <div class="aspect-square overflow-hidden rounded-3xl">
-                <img src="https://picsum.photos/id/1015/800/800" alt="Coffee shop interior" 
-                     class="w-full h-full object-cover">
-            </div>
-            <div class="aspect-square overflow-hidden rounded-3xl">
-                <img src="https://picsum.photos/id/160/800/800" alt="Latte art" 
-                     class="w-full h-full object-cover">
-            </div>
-            <div class="aspect-square overflow-hidden rounded-3xl">
-                <img src="https://picsum.photos/id/201/800/800" alt="Avocado toast" 
-                     class="w-full h-full object-cover">
-            </div>
-            <div class="aspect-square overflow-hidden rounded-3xl">
-                <img src="https://picsum.photos/id/251/800/800" alt="Outdoor seating" 
-                     class="w-full h-full object-cover">
-            </div>
-            <div class="aspect-square overflow-hidden rounded-3xl">
-                <img src="https://picsum.photos/id/292/800/800" alt="Matcha drink" 
-                     class="w-full h-full object-cover">
-            </div>
-            <div class="aspect-square overflow-hidden rounded-3xl col-span-2 md:col-span-1 lg:col-span-2 row-span-2">
-                <img src="https://picsum.photos/id/312/1200/1200" alt="Coffee beans and grinder" 
-                     class="w-full h-full object-cover">
-            </div>
-            <div class="aspect-square overflow-hidden rounded-3xl">
-                <img src="https://picsum.photos/id/366/800/800" alt="Croissant" 
-                     class="w-full h-full object-cover">
-            </div>
-            <div class="aspect-square overflow-hidden rounded-3xl">
-                <img src="https://picsum.photos/id/431/800/800" alt="People chatting" 
-                     class="w-full h-full object-cover">
-            </div>
-            <div class="aspect-square overflow-hidden rounded-3xl">
-                <img src="https://picsum.photos/id/48/800/800" alt="Morning light" 
-                     class="w-full h-full object-cover">
+                <span class="font-serif text-3xl font-bold text-forest-700 block">7 Days</span>
+                <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">From 8:30 AM</span>
             </div>
         </div>
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="bg-[#3F2A22] text-[#f5d9b0]">
-        <div class="max-w-screen-2xl mx-auto px-6 py-20 grid md:grid-cols-12 gap-16">
-            <!-- left -->
-            <div class="md:col-span-7">
-                <div class="max-w-md">
-                    <span class="text-[#d9b38a] text-sm font-medium">EST. 2021 • CHIANG MAI</span>
-                    <h2 class="heading-font text-[#f5d9b0] text-6xl font-semibold leading-none mt-2">A place to slow down</h2>
-                    
-                    <div class="prose prose-invert mt-10 text-[#e8c8a0]">
-                        <p class="text-lg">Chim Chill Coffee &amp; Food is a neighborhood café nestled in the hills of Suthep. We believe in quality over speed — from our carefully sourced single origin beans to the pastries baked fresh each morning.</p>
-                        <p>We roast our own coffee on-site twice a week and partner with local farms for our ingredients. Our space was designed to feel like an extension of your own living room: warm wooden tables, plenty of natural light, and soft background jazz.</p>
-                    </div>
-                    
-                    <div class="mt-12 flex items-center gap-x-8 border-t border-[#6a5242] pt-8">
-                        <div>
-                            <div class="uppercase text-xs text-[#c9a17e]">OWNER &amp; BARISTA</div>
-                            <div class="font-medium text-white mt-2">Nicha “Chim” Srisuk</div>
-                        </div>
-                        <div class="flex-1 h-px bg-[#6a5242]"></div>
-                        <div class="text-xs leading-tight max-w-[130px]">
-                            “Good coffee is only the beginning. It’s the people and the conversations that make this place special.”
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- right -->
-            <div class="md:col-span-5 bg-[#2c211b] rounded-3xl p-8 flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between text-xs">
-                        <div class="flex items-center gap-x-2">
-                            <span class="text-emerald-400">●</span>
-                            <span class="font-medium text-emerald-300">OPEN NOW</span>
-                        </div>
-                        <div class="font-mono">8:00 — 15:30</div>
-                    </div>
-                    
-                    <div class="mt-6 space-y-6 text-sm">
-                        <div class="flex justify-between border-b border-[#46372f] pb-6">
-                            <div class="text-[#c9a17e]">MON — FRI</div>
-                            <div>8:00 AM – 3:30 PM</div>
-                        </div>
-                        <div class="flex justify-between border-b border-[#46372f] pb-6">
-                            <div class="text-[#c9a17e]">SATURDAY</div>
-                            <div>8:30 AM – 4:00 PM</div>
-                        </div>
-                        <div class="flex justify-between">
-                            <div class="text-[#c9a17e]">SUNDAY</div>
-                            <div class="text-amber-300">CLOSED</div>
-                        </div>
-                    </div>
-                </div>
+    <section id="about" class="py-20 bg-warmcream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
                 
-                <div class="mt-auto pt-12">
-                    <div class="flex items-center justify-between text-xs">
-                        <div>
-                            <i class="fa-solid fa-location-dot text-[#d9b38a]"></i>
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 text-amberwood-600 font-bold uppercase tracking-widest text-xs">
+                        <span class="w-8 h-0.5 bg-amberwood-500 inline-block"></span>
+                        About Beechwoods Cafe
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 leading-tight">
+                        A Warm Rest Stop in the Heart of the Tasman District.
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nestled quietly on Waller Street in Murchison, Beechwoods Cafe is the classic New Zealand stopover where rustic charm meets heartwarming flavors. Whether you are driving between Nelson, Christchurch, and the wild West Coast or exploring the Kahurangi National Park, we are here to revive your travel spirits.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        From freshly pulled espresso using premium beans to flaky homemade pies, freshly buttered scones, gourmet sandwiches, and wholesome all-day breakfast plates, every dish is prepared with genuine country warmth.
+                    </p>
+
+                    <!-- Features Checklist -->
+                    <div class="grid sm:grid-cols-2 gap-3 pt-2">
+                        <div class="flex items-center gap-3 text-forest-900 font-semibold text-sm">
+                            <i class="fa-solid fa-circle-check text-amberwood-500 text-base"></i> Fresh Daily Baking Cabinet
                         </div>
-                        <div class="text-right text-[#c9a17e] text-xs max-w-[210px]">
-                            38, 3 หมู่ที่ 5, Suthep,<br>
-                            Mueang Chiang Mai District,<br>
-                            Chiang Mai 50200
+                        <div class="flex items-center gap-3 text-forest-900 font-semibold text-sm">
+                            <i class="fa-solid fa-circle-check text-amberwood-500 text-base"></i> Dairy-Free & GF Options
+                        </div>
+                        <div class="flex items-center gap-3 text-forest-900 font-semibold text-sm">
+                            <i class="fa-solid fa-circle-check text-amberwood-500 text-base"></i> Shaded Courtyard Seating
+                        </div>
+                        <div class="flex items-center gap-3 text-forest-900 font-semibold text-sm">
+                            <i class="fa-solid fa-circle-check text-amberwood-500 text-base"></i> Clean Traveler Restrooms
                         </div>
                     </div>
-                    
-                    <a href="tel:+66846663990" 
-                       class="mt-8 block bg-[#6B3E2F] text-center py-6 rounded-3xl text-white text-sm font-medium active:scale-[0.97] transition-transform">
-                        CALL +66 84 666 3990
-                    </a>
-                    
-                    <div onclick="showLocationModal()" 
-                         class="text-center text-[#d9b38a] text-xs mt-8 flex items-center justify-center gap-x-2 cursor-pointer hover:text-white">
-                        <i class="fa-solid fa-map"></i>
-                        <span>GET DIRECTIONS</span>
+                </div>
+
+                <!-- Image Showcase collage -->
+                <div class="grid grid-cols-2 gap-4 relative">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=700&q=80" alt="Cafe Interior" class="rounded-2xl shadow-lg object-cover h-64 w-full hover:scale-[1.02] transition duration-300">
+                        <div class="bg-forest-900 text-white p-6 rounded-2xl shadow-lg">
+                            <i class="fa-solid fa-mug-hot text-amberwood-400 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-lg font-serif">Barista Craft</h4>
+                            <p class="text-xs text-gray-300 mt-1">Velvety flat whites and iced refreshments crafted just how you like them.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=700&q=80" alt="Fresh Bakery" class="rounded-2xl shadow-lg object-cover h-48 w-full hover:scale-[1.02] transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=700&q=80" alt="Outdoor Seating" class="rounded-2xl shadow-lg object-cover h-56 w-full hover:scale-[1.02] transition duration-300">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BY OWNER SECTION -->
+    <section id="by-owner" class="py-16 bg-forest-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d79e53_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-forest-800/80 backdrop-blur-md rounded-3xl border border-forest-700/80 p-8 sm:p-12 shadow-2xl">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="shrink-0 text-center">
+                        <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-amberwood-400/60 p-1 mx-auto overflow-hidden shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Cafe Host" class="w-full h-full object-cover rounded-full">
+                        </div>
+                        <div class="mt-3">
+                            <span class="text-xs font-bold uppercase tracking-widest text-amberwood-400">Owner & Manager</span>
+                            <h4 class="font-serif text-lg font-bold">The Beechwoods Team</h4>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amberwood-500/20 text-amberwood-300 border border-amberwood-400/30">
+                            <i class="fa-solid fa-heart"></i> Note From The Owner
+                        </div>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white">
+                            "Kia Ora! Welcome to our little corner of Murchison."
+                        </h3>
+                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed font-light">
+                            "We know how long and winding the mountain roads through the Buller Gorge and Lewis Pass can be. When you step into Beechwoods Cafe, our promise is simple: a warm greeting, freshly baked treats ready in the cabinet, piping hot coffee, and a cozy space to rest your feet before continuing your adventure. Thank you to every traveler and local who has supported us over the years!"
+                        </p>
+                        <div class="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-amberwood-200">
+                            <span><i class="fa-solid fa-check text-amberwood-400 mr-1"></i> Locally Sourced Ingredients</span>
+                            <span><i class="fa-solid fa-check text-amberwood-400 mr-1"></i> Friendly Kiwi Hospitality</span>
+                            <span><i class="fa-solid fa-check text-amberwood-400 mr-1"></i> Clean Traveler Stop</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#2c211b] text-[#d4b89a]">
-        <div class="max-w-screen-2xl mx-auto px-8 pt-16 pb-8">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-y-12">
-                <div>
-                    <div class="flex items-center gap-x-3 text-white">
-                        <div class="w-8 h-8 bg-[#d97757] rounded-2xl flex items-center justify-center">
-                            <i class="fa-solid fa-mug-hot text-white"></i>
-                        </div>
-                        <span class="heading-font text-3xl font-bold tracking-tighter">chim chill</span>
-                    </div>
-                    <div class="mt-6 text-xs leading-loose">
-                        Specialty coffee<br>
-                        Fresh pastries<br>
-                        Community space
-                    </div>
-                    <div class="text-[10px] mt-16 opacity-40">© 2025 Chim Chill Coffee &amp; Food</div>
-                </div>
-                
-                <div class="text-xs">
-                    <div class="font-medium text-[#f5d9b0] mb-6">EXPLORE</div>
-                    <div class="space-y-4">
-                        <div onclick="smoothScrollTo('menu')" class="cursor-pointer hover:text-white">Menu</div>
-                        <div onclick="smoothScrollTo('reviews')" class="cursor-pointer hover:text-white">Reviews</div>
-                        <div onclick="smoothScrollTo('photos')" class="cursor-pointer hover:text-white">Gallery</div>
-                        <div onclick="smoothScrollTo('about')" class="cursor-pointer hover:text-white">Our Story</div>
-                    </div>
-                </div>
-                
-                <div class="text-xs">
-                    <div class="font-medium text-[#f5d9b0] mb-6">VISIT</div>
-                    <div class="leading-snug">
-                        38 Moo 5<br>
-                        Suthep, Mueang Chiang Mai<br>
-                        Chiang Mai 50200<br><br>
-                        Thailand
-                    </div>
-                    <div class="mt-7 text-xs font-medium flex items-center gap-x-2">
-                        <i class="fa-solid fa-phone"></i>
-                        <a href="tel:+66846663990" class="hover:text-white">+66 84 666 3990</a>
-                    </div>
-                </div>
-                
-                <div class="col-span-2 md:col-span-2">
-                    <div class="bg-[#3F2A22] rounded-3xl p-8 text-xs">
-                        <div class="uppercase tracking-widest text-[#d9b38a]">Today’s special</div>
-                        <div class="mt-6 flex items-center justify-between">
-                            <div class="font-medium">Strawberry Basil Lemonade</div>
-                            <div class="text-[#d97757] font-medium">฿75</div>
-                        </div>
-                        <div class="text-[10px] text-[#c9a17e] mt-1">Limited batch • only 12 left today</div>
-                        
-                        <div class="h-px bg-[#6a5242] my-8"></div>
-                        
-                        <div class="flex items-center justify-between text-[10px]">
-                            <div class="flex items-center">
-                                <span class="inline-block w-2 h-2 bg-[#f5c8a8] rounded-full mr-2 animate-ping"></span>
-                                FRESH BREW
-                            </div>
-                            <div class="font-mono">KENYA • AA</div>
-                        </div>
-                    </div>
-                    
-                    <div class="text-[10px] flex justify-between items-center mt-8">
-                        <div class="flex gap-x-5">
-                            <i onclick="fakeSocial('instagram')" class="fa-brands fa-instagram cursor-pointer hover:text-white"></i>
-                            <i onclick="fakeSocial('facebook')" class="fa-brands fa-facebook cursor-pointer hover:text-white"></i>
-                        </div>
-                        <div onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
-                             class="cursor-pointer flex items-center gap-x-1 text-[#d9b38a]">
-                            <span class="uppercase">Back to top</span> 
-                            <i class="fa-solid fa-arrow-up text-xs"></i>
-                        </div>
-                    </div>
+    <!-- MENU SECTION -->
+    <section id="menu" class="py-20 bg-warmcream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-amberwood-600 font-bold uppercase tracking-widest text-xs block mb-2">Honest, Hearty & Fresh</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900">Our Cafe Menu</h2>
+                <p class="text-gray-600 mt-3 text-sm sm:text-base">
+                    Priced comfortably between <strong>$10–$20</strong> for hearty meal portions, cabinet snacks, and artisan coffees.
+                </p>
+
+                <!-- Menu Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8" id="menuTabs">
+                    <button onclick="switchTab('breakfast')" class="menu-tab-btn active px-5 py-2.5 rounded-full text-sm font-semibold transition shadow-sm bg-forest-900 text-amberwood-300" data-target="breakfast">
+                        🍳 Breakfast & Brunch
+                    </button>
+                    <button onclick="switchTab('pies-lunch')" class="menu-tab-btn px-5 py-2.5 rounded-full text-sm font-semibold transition bg-white text-forest-800 hover:bg-forest-100" data-target="pies-lunch">
+                        🥧 Pies & Savouries
+                    </button>
+                    <button onclick="switchTab('cabinet')" class="menu-tab-btn px-5 py-2.5 rounded-full text-sm font-semibold transition bg-white text-forest-800 hover:bg-forest-100" data-target="cabinet">
+                        🍰 Cabinet & Sweet Treats
+                    </button>
+                    <button onclick="switchTab('drinks')" class="menu-tab-btn px-5 py-2.5 rounded-full text-sm font-semibold transition bg-white text-forest-800 hover:bg-forest-100" data-target="drinks">
+                        ☕ Espresso & Cold Drinks
+                    </button>
                 </div>
             </div>
+
+            <!-- Tab Content Container -->
+            <div class="max-w-5xl mx-auto">
+                
+                <!-- Tab: Breakfast -->
+                <div id="tab-breakfast" class="menu-content grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <div class="flex items-center gap-2">
+                                <h4 class="font-serif font-bold text-lg text-forest-950">Beechwoods Big Breakfast</h4>
+                                <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold uppercase">Popular</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-600">Free-range eggs your way, streaky bacon, grilled kransky, hash browns, roasted tomato, artisan sourdough.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$19.50</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <div class="flex items-center gap-2">
+                                <h4 class="font-serif font-bold text-lg text-forest-950">Eggs Benedict on Sourdough</h4>
+                                <span class="text-[10px] bg-green-100 text-green-800 px-2 py-0.5 rounded font-bold uppercase">GF Opt</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-600">Poached farm eggs, rich hollandaise, baby spinach with choice of Crispy Bacon or Smoked Salmon.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$18.00</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Creamy Field Mushrooms</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Sautéed garlic mushrooms, fresh herbs, whipped feta on toasted ciabatta with balsamic reduction.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$16.50</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <div class="flex items-center gap-2">
+                                <h4 class="font-serif font-bold text-lg text-forest-950">Avocado & Feta Smash</h4>
+                                <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">VEG</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-600">Ripe avocado, crumbled feta, cherry tomatoes, dukkah seasoning, poached egg on grain toast.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$15.50</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Fluffy Pancakes with Bacon & Maple</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Stack of two golden buttermilk pancakes, berry compote, crispy bacon, pure Canadian maple syrup.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$15.00</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Toasted Granola Bowl</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">House toasted nuts and oats, Greek coconut yogurt, seasonal berries, local honey drizzle.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$12.50</span>
+                    </div>
+                </div>
+
+                <!-- Tab: Pies & Lunch -->
+                <div id="tab-pies-lunch" class="menu-content hidden grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <div class="flex items-center gap-2">
+                                <h4 class="font-serif font-bold text-lg text-forest-950">Murchison Steak & Craft Ale Pie</h4>
+                                <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold uppercase">Signature</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-600">Slow-braised tender beef chunks in rich gravy with flaky golden puff pastry. Served with relish.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$11.50</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Smoked Bacon & Egg Slice</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Generous slice of classic Kiwi picnic pie with whole eggs, bacon, cheddar, and sweet onion relish.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$10.00</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <div class="flex items-center gap-2">
+                                <h4 class="font-serif font-bold text-lg text-forest-950">Gourmet Beef Burger & Chips</h4>
+                                <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">Hearty</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-600">Prime beef patty, beetroot, cheddar, fried egg, lettuce, aioli, brioche bun with hot rustic fries.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$19.50</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Crispy Chicken Club Sandwich</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Grilled marinated chicken breast, streaky bacon, avocado, tomato, lettuce & garlic mayo on toasted multigrain.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$17.50</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Creamy Seafood Chowder</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Packed with local fish, mussels, and squid in a rich herb-infused cream broth. Served with warm garlic loaf.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$18.50</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Golden Hot Chips Basket</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Crispy seasoned fries served with tomato sauce and creamy aioli.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$9.50</span>
+                    </div>
+                </div>
+
+                <!-- Tab: Cabinet Treats -->
+                <div id="tab-cabinet" class="menu-content hidden grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <div class="flex items-center gap-2">
+                                <h4 class="font-serif font-bold text-lg text-forest-950">Fresh Date & Orange Scone</h4>
+                                <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">Baked Daily</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-600">Warm scone served with whipped butter and house-made raspberry jam.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$6.50</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Classic Carrot Cake Slice</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Moist spiced sponge loaded with walnuts and thick cream cheese frosting.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$7.50</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <div class="flex items-center gap-2">
+                                <h4 class="font-serif font-bold text-lg text-forest-950">Gooey Caramel Slice</h4>
+                                <span class="text-[10px] bg-green-100 text-green-800 px-2 py-0.5 rounded font-bold">GF</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-600">Buttery biscuit base, thick golden caramel, and rich dark chocolate topping.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$6.50</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Cheese & Herb Savory Muffin</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Packed with vintage cheddar, spinach, and sweet corn. Heated with butter.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$6.50</span>
+                    </div>
+                </div>
+
+                <!-- Tab: Drinks -->
+                <div id="tab-drinks" class="menu-content hidden grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Kiwi Flat White / Latte / Cappuccino</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Expertly brewed double shot espresso with velvety steamed milk. (Oat/Soy/Almond available).</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$5.50 / $6.00</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Long Black / Americano</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Rich and smooth crema, premium roasted South Island beans.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$4.80</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Iced Caramel Coffee / Iced Chocolate</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Chilled milk, double shot espresso, vanilla ice cream, whipped cream & caramel sauce.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$8.00</span>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 hover:border-amberwood-400 transition flex justify-between items-start">
+                        <div class="space-y-1 pr-4">
+                            <h4 class="font-serif font-bold text-lg text-forest-950">Real Fruit Smoothie (Berry / Mango)</h4>
+                            <p class="text-xs sm:text-sm text-gray-600">Blended with real fruit, vanilla Greek yogurt, and apple juice or coconut water.</p>
+                        </div>
+                        <span class="font-bold text-forest-900 text-lg whitespace-nowrap">$8.50</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Menu Note -->
+            <div class="text-center mt-8 text-xs text-gray-500">
+                * Prices are in NZD. Dietary options (Gluten-Free, Vegetarian, Dairy-Free) are available daily. Please ask our staff at the counter.
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTOS GALLERY SECTION -->
+    <section id="photos" class="py-20 bg-forest-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-amberwood-400 font-bold uppercase tracking-widest text-xs block mb-2">Moments & Flavors</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold">Photos of Beechwoods</h2>
+                    <p class="text-gray-300 mt-2 text-sm sm:text-base">Take a peek inside our dining room, sunlit garden, and kitchen creations.</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex gap-2">
+                    <span class="px-3.5 py-1.5 rounded-full bg-forest-800 text-amberwood-300 text-xs font-semibold border border-forest-700">
+                        <i class="fa-solid fa-camera mr-1"></i> Customer & Cafe Snaps
+                    </span>
+                </div>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                
+                <!-- Photo 1 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-lg bg-forest-800 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="Cafe Interior Table" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <p class="text-xs font-semibold text-white">Cozy Wooden Interior</p>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-lg bg-forest-800 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Fresh Coffee Pour" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <p class="text-xs font-semibold text-white">Velvety Flat White</p>
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-lg bg-forest-800 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1621236378699-8597fee6a1ce?auto=format&fit=crop&w=600&q=80" alt="Fresh Homemade Savoury Pie" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <p class="text-xs font-semibold text-white">Signature NZ Savoury Pies</p>
+                    </div>
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-lg bg-forest-800 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80" alt="Hearty Breakfast Spread" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <p class="text-xs font-semibold text-white">All-Day Breakfast Plates</p>
+                    </div>
+                </div>
+
+                <!-- Photo 5 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-lg bg-forest-800 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80" alt="Fresh Bakery Scones and Sweets" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <p class="text-xs font-semibold text-white">Daily Sweet Cabinet Slices</p>
+                    </div>
+                </div>
+
+                <!-- Photo 6 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-lg bg-forest-800 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Murchison Courtyard" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <p class="text-xs font-semibold text-white">Relaxing Outdoor Seating</p>
+                    </div>
+                </div>
+
+                <!-- Photo 7 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-lg bg-forest-800 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="Gourmet Burger" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <p class="text-xs font-semibold text-white">Juicy Lunch Burgers</p>
+                    </div>
+                </div>
+
+                <!-- Photo 8 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-lg bg-forest-800 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=600&q=80" alt="Coffee Cup and Beans" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                        <p class="text-xs font-semibold text-white">Specialty Roasts & Beans</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section id="reviews" class="py-20 bg-warmcream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="text-center text-[10px] mt-20 opacity-30">
-                Crafted with ☕ in the mountains of Chiang Mai
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-amberwood-600 font-bold uppercase tracking-widest text-xs block mb-2">Customer Feedback</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900">What Travelers & Locals Say</h2>
+                <p class="text-gray-600 mt-2 text-sm sm:text-base">
+                    Based on real customer visits and traveler experiences on Waller Street.
+                </p>
+            </div>
+
+            <!-- Rating Summary Card -->
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-amberwood-100 mb-12">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="md:col-span-5 text-center md:border-r border-gray-100 md:pr-8">
+                        <div class="font-serif text-6xl font-extrabold text-forest-900">3.7</div>
+                        <div class="flex justify-center items-center gap-1 text-amber-400 text-lg my-2">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-regular fa-star text-gray-300"></i>
+                        </div>
+                        <p class="font-bold text-forest-900 text-base">705 Google Reviews</p>
+                        <p class="text-xs text-gray-500 mt-1">108 travelers checked in & recommended</p>
+                    </div>
+
+                    <div class="md:col-span-7 space-y-2 text-xs sm:text-sm">
+                        <div class="flex items-center gap-3">
+                            <span class="w-12 text-gray-600 font-medium">5 Star</span>
+                            <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-amberwood-500 h-3 rounded-full" style="width: 52%"></div>
+                            </div>
+                            <span class="w-10 text-right text-gray-500 font-medium">52%</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-12 text-gray-600 font-medium">4 Star</span>
+                            <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-amberwood-400 h-3 rounded-full" style="width: 24%"></div>
+                            </div>
+                            <span class="w-10 text-right text-gray-500 font-medium">24%</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-12 text-gray-600 font-medium">3 Star</span>
+                            <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-amberwood-300 h-3 rounded-full" style="width: 12%"></div>
+                            </div>
+                            <span class="w-10 text-right text-gray-500 font-medium">12%</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-12 text-gray-600 font-medium">2 Star</span>
+                            <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-gray-300 h-3 rounded-full" style="width: 7%"></div>
+                            </div>
+                            <span class="w-10 text-right text-gray-500 font-medium">7%</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-12 text-gray-600 font-medium">1 Star</span>
+                            <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-gray-300 h-3 rounded-full" style="width: 5%"></div>
+                            </div>
+                            <span class="w-10 text-right text-gray-500 font-medium">5%</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Review Cards Grid -->
+            <div class="grid md:grid-cols-3 gap-6">
+                
+                <!-- Review 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-amber-400 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[11px] text-gray-400">2 weeks ago</span>
+                        </div>
+                        <p class="text-forest-950 text-sm leading-relaxed mb-4">
+                            "A lifesaver during our road trip to Greymouth! We stopped here for morning tea. The steak & ale pie was piping hot with incredible pastry, and the flat whites were spot on. Friendly counter staff too."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-3 border-t border-gray-100">
+                        <div class="w-9 h-9 rounded-full bg-forest-100 text-forest-800 flex items-center justify-center font-bold text-xs">
+                            KM
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-forest-900">Kylie Morrison</h5>
+                            <span class="text-[10px] text-gray-500">Local Guide • Roadtripper</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-amber-400 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star text-gray-300"></i>
+                            </div>
+                            <span class="text-[11px] text-gray-400">1 month ago</span>
+                        </div>
+                        <p class="text-forest-950 text-sm leading-relaxed mb-4">
+                            "Solid country cafe with reasonable prices ($12-18 for good portions). The scones with jam and cream are huge and delicious. Nice garden area out back to stretch your legs with a dog."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-3 border-t border-gray-100">
+                        <div class="w-9 h-9 rounded-full bg-amberwood-100 text-amberwood-800 flex items-center justify-center font-bold text-xs">
+                            DR
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-forest-900">David Reynolds</h5>
+                            <span class="text-[10px] text-gray-500">Verified Visitor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-amber-400 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="text-[11px] text-gray-400">2 months ago</span>
+                        </div>
+                        <p class="text-forest-950 text-sm leading-relaxed mb-4">
+                            "Great central spot right in Murchison. Fast service even when the bus tour pulled in. Big breakfast gave us fuel for kayaking on the Buller River. Will certainly drop by next time."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-3 border-t border-gray-100">
+                        <div class="w-9 h-9 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xs">
+                            SJ
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold text-forest-900">Sarah Jenkins</h5>
+                            <span class="text-[10px] text-gray-500">Adventure Traveler</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & CONTACT SECTION -->
+    <section id="location" class="py-20 bg-forest-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10">
+                
+                <!-- Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-amberwood-400 font-bold uppercase tracking-widest text-xs block mb-2">Visit & Contact</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold">Find Us in Murchison</h2>
+                        <p class="text-gray-300 mt-2 text-sm">
+                            Conveniently situated on Waller Street, with ample street parking for cars, campervans, and caravans.
+                        </p>
+                    </div>
+
+                    <!-- Contact Details Card -->
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-forest-800/90 border border-forest-700">
+                            <div class="w-10 h-10 rounded-xl bg-amberwood-500/20 text-amberwood-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-map-pin text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Physical Location</h4>
+                                <p class="text-gray-300 text-xs sm:text-sm mt-0.5">32 Waller Street, Murchison 7007, New Zealand</p>
+                                <a href="https://maps.google.com/?q=32+Waller+Street,+Murchison+7007,+New+Zealand" target="_blank" class="inline-flex items-center gap-1 text-xs text-amberwood-400 font-semibold mt-2 hover:underline">
+                                    Open in Google Maps <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-forest-800/90 border border-forest-700">
+                            <div class="w-10 h-10 rounded-xl bg-amberwood-500/20 text-amberwood-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Telephone Inquiries</h4>
+                                <a href="tel:+6435239571" class="text-amberwood-400 text-sm font-semibold hover:underline block mt-0.5">+64 3 523 9571</a>
+                                <p class="text-[11px] text-gray-400 mt-1">Available during operational cafe hours</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-forest-800/90 border border-forest-700">
+                            <div class="w-10 h-10 rounded-xl bg-amberwood-500/20 text-amberwood-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-clock text-lg"></i>
+                            </div>
+                            <div class="w-full">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="font-bold text-sm text-white">Business Hours</h4>
+                                    <span class="text-xs bg-red-500/20 text-red-300 px-2 py-0.5 rounded font-semibold border border-red-500/30">Closed Now</span>
+                                </div>
+                                <div class="mt-2 text-xs text-gray-300 space-y-1">
+                                    <div class="flex justify-between py-0.5 border-b border-forest-700/50">
+                                        <span>Monday – Sunday</span>
+                                        <span class="font-medium text-amberwood-300">8:30 AM – 4:00 PM</span>
+                                    </div>
+                                    <p class="text-[11px] text-gray-400 pt-1">Kitchen closes 30 mins before closing time daily.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call Action -->
+                    <div class="pt-2">
+                        <a href="tel:+6435239571" class="w-full py-3.5 px-6 rounded-xl bg-amberwood-500 hover:bg-amberwood-400 text-forest-950 font-bold transition flex items-center justify-center gap-2 text-sm shadow-lg">
+                            <i class="fa-solid fa-phone"></i> Call +64 3 523 9571
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Map Mockup & Traveler Guide -->
+                <div class="lg:col-span-7 flex flex-col justify-between">
+                    
+                    <!-- Map Presentation -->
+                    <div class="relative rounded-3xl overflow-hidden border border-forest-700 shadow-2xl bg-forest-800 min-h-[340px] flex items-center justify-center group">
+                        <!-- Stylized Map Background -->
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center filter brightness-[0.45] group-hover:scale-105 transition duration-700"></div>
+
+                        <!-- Map Card Overlay -->
+                        <div class="relative z-10 text-center p-8 max-w-md mx-4 glass-card rounded-2xl shadow-2xl text-forest-950 border border-white/40">
+                            <div class="w-12 h-12 rounded-full bg-forest-800 text-amberwood-400 flex items-center justify-center mx-auto mb-3 shadow-md">
+                                <i class="fa-solid fa-location-dot text-xl animate-bounce"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl text-forest-900">Beechwoods Cafe</h3>
+                            <p class="text-xs text-gray-600 mt-1">32 Waller Street, Murchison 7007</p>
+                            <div class="flex items-center justify-center gap-2 my-3 text-xs text-amberwood-700 font-semibold bg-amberwood-50 py-1.5 px-3 rounded-lg border border-amberwood-200">
+                                <span>Rating 3.7 ★ (705 reviews)</span>
+                                <span>•</span>
+                                <span>$10–20</span>
+                            </div>
+                            <a href="https://maps.google.com/?q=32+Waller+Street,+Murchison+7007,+New+Zealand" target="_blank" class="w-full block py-2.5 px-4 rounded-xl bg-forest-800 hover:bg-forest-700 text-white text-xs font-bold transition shadow-md">
+                                Get GPS Navigation
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Travel Info Helper Box -->
+                    <div class="mt-6 p-5 rounded-2xl bg-forest-800/60 border border-forest-700/80 text-xs text-gray-300">
+                        <div class="flex items-center gap-2 font-bold text-amberwood-400 mb-2 uppercase tracking-wider text-[11px]">
+                            <i class="fa-solid fa-route"></i> Road Trip Pro Tip:
+                        </div>
+                        <p class="leading-relaxed">
+                            Murchison is the ideal halfway junction between Christchurch (via Lewis Pass), Nelson, and the West Coast. Fill your tank and take a scenic 30-minute coffee & lunch break at Beechwoods before tackling the Gorge.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-forest-950 text-gray-400 text-xs border-t border-forest-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-white">
+                        <div class="w-8 h-8 rounded-lg bg-forest-800 text-amberwood-400 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-mug-hot"></i>
+                        </div>
+                        <span class="font-serif text-xl font-bold tracking-tight">Beechwoods Cafe</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed text-xs">
+                        Your friendly countryside pitstop in Murchison, NZ. Fresh pies, bakery favorites, breakfast plates, and espresso coffee.
+                    </p>
+                    <p class="text-amberwood-400 font-semibold text-[11px]">
+                        Reported & saved by 108+ community travelers.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold text-sm mb-3">Quick Navigation</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#overview" class="hover:text-amberwood-400 transition">Overview</a></li>
+                        <li><a href="#menu" class="hover:text-amberwood-400 transition">Our Cafe Menu</a></li>
+                        <li><a href="#photos" class="hover:text-amberwood-400 transition">Photo Gallery</a></li>
+                        <li><a href="#reviews" class="hover:text-amberwood-400 transition">705 Reviews (3.7★)</a></li>
+                        <li><a href="#by-owner" class="hover:text-amberwood-400 transition">Owner Message</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold text-sm mb-3">Key Details</h5>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><strong>Address:</strong> 32 Waller St, Murchison 7007</li>
+                        <li><strong>Phone:</strong> <a href="tel:+6435239571" class="hover:text-amberwood-400">+64 3 523 9571</a></li>
+                        <li><strong>Price:</strong> $10–$20 NZD per person</li>
+                        <li><strong>Status:</strong> Opens 8:30 AM Daily</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold text-sm mb-3">South Island Stop</h5>
+                    <p class="text-gray-400 mb-3">
+                        Passing through Waller Street? We look forward to serving you fresh food and hot coffee.
+                    </p>
+                    <a href="tel:+6435239571" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-forest-800 text-amberwood-300 hover:bg-forest-700 text-xs font-semibold transition">
+                        <i class="fa-solid fa-phone"></i> Call Ahead for Takeaways
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-forest-900/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-gray-500">
+                <p>&copy; <span id="year"></span> Beechwoods Cafe, Murchison NZ. All rights reserved.</p>
+                <p>32 Waller Street, Murchison 7007, New Zealand • Tel: +64 3 523 9571</p>
             </div>
         </div>
     </footer>
 
-    <!-- CART DRAWER -->
-    <div onclick="if(event.target.id === 'cart-backdrop') toggleCart()" id="cart-backdrop"
-         class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] transition-opacity">
-        <div onclick="event.stopImmediatePropagation()" 
-             class="absolute right-0 top-0 bottom-0 w-full max-w-xs bg-white shadow-2xl translate-x-full transition-transform duration-500 flex flex-col"
-             id="cart-drawer">
-            
-            <div class="px-6 pt-8 pb-6 border-b flex items-center justify-between">
-                <div class="font-semibold text-xl">Your Cart</div>
-                <button onclick="toggleCart()" class="text-3xl leading-none text-gray-400">×</button>
-            </div>
-            
-            <div id="cart-items" class="flex-1 p-6 space-y-8 overflow-auto">
-                <!-- populated by JS -->
-            </div>
-            
-            <div class="p-6 border-t">
-                <div class="flex justify-between text-sm mb-2">
-                    <div class="text-[#8a6645]">Subtotal</div>
-                    <div id="cart-subtotal" class="font-medium">฿0</div>
-                </div>
-                <div class="flex justify-between text-xs text-[#8a6645]">
-                    <div>Service fee</div>
-                    <div>฿15</div>
-                </div>
-                
-                <div class="h-px bg-gray-100 my-6"></div>
-                
-                <div class="flex justify-between items-baseline">
-                    <div class="uppercase text-xs font-medium">Total</div>
-                    <div id="cart-total" class="text-4xl font-light">฿15</div>
-                </div>
-                
-                <button onclick="checkout()" 
-                        class="w-full py-6 bg-[#6B3E2F] text-white rounded-3xl mt-8 text-sm font-semibold active:scale-95 transition-all">
-                    PROCEED TO CHECKOUT
-                </button>
-                
-                <div onclick="toggleCart()" 
-                     class="text-center text-xs text-[#8a6645] mt-6 cursor-pointer">Keep browsing</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CONTACT MODAL -->
-    <div onclick="if(event.target.id === 'modal-backdrop') hideContactModal()" id="modal-backdrop"
-         class="hidden fixed inset-0 bg-black/70 z-[99999] flex items-center justify-center">
-        <div onclick="event.stopImmediatePropagation()" 
-             class="bg-white rounded-3xl max-w-md w-full mx-4 overflow-hidden">
-            
-            <!-- header -->
-            <div class="px-8 py-7 border-b flex items-center justify-between">
-                <div class="font-semibold">Get in touch</div>
-                <button onclick="hideContactModal()" class="text-4xl text-gray-300 leading-none hover:text-gray-500">×</button>
-            </div>
-            
-            <div class="p-8">
-                <div class="flex flex-col gap-y-8">
-                    <a href="tel:+66846663990" 
-                       class="flex items-center gap-x-6 group">
-                        <div class="w-12 h-12 bg-[#f5e8d3] rounded-2xl flex items-center justify-center text-3xl group-active:scale-95 transition-transform">📞</div>
-                        <div class="flex-1">
-                            <div class="text-xs text-[#8a6645]">PHONE</div>
-                            <div class="font-medium text-xl text-[#3F2A22]">+66 84 666 3990</div>
-                        </div>
-                    </a>
-                    
-                    <div onclick="fakeWhatsApp()" 
-                         class="flex items-center gap-x-6 group cursor-pointer">
-                        <div class="w-12 h-12 bg-[#25D366] text-white rounded-2xl flex items-center justify-center text-3xl group-active:scale-95 transition-transform">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="text-xs text-[#8a6645]">WHATSAPP</div>
-                            <div class="font-medium text-xl text-[#3F2A22]">Chat with us</div>
-                        </div>
-                    </div>
-                    
-                    <div class="text-xs bg-[#f9f4eb] p-5 rounded-3xl">
-                        <div class="font-medium mb-2 flex items-center gap-x-2">
-                            <span class="text-[#6B3E2F]">LOCATION</span>
-                        </div>
-                        <div class="text-[#6B3E2F]">
-                            38, 3 หมู่ที่ 5<br>
-                            Suthep, Mueang Chiang Mai<br>
-                            Chiang Mai 50200
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-[#f9f4eb] px-8 py-5 text-xs flex items-center justify-between text-[#8a6645]">
-                <div>Hours today: 8am – 3:30pm</div>
-                <div onclick="hideContactModal()" class="underline cursor-pointer">Close</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- LOCATION MODAL -->
-    <div onclick="if(event.target.id === 'location-modal') hideLocationModal()" id="location-modal"
-         class="hidden fixed inset-0 bg-black/70 z-[99999] flex items-center justify-center">
-        <div onclick="event.stopImmediatePropagation()" 
-             class="bg-white max-w-lg w-full mx-4 rounded-3xl overflow-hidden">
-            <div class="p-5 bg-[#3F2A22] text-[#f5d9b0] flex items-center">
-                <i class="fa-solid fa-location-dot mr-3"></i>
-                <div class="font-medium">Chim Chill Coffee &amp; Food</div>
-            </div>
-            
-            <div class="p-6">
-                <div id="map-placeholder" 
-                     class="h-64 bg-[#e8d9c7] rounded-3xl mb-6 flex items-center justify-center relative overflow-hidden">
-                    <!-- fake map -->
-                    <div class="absolute inset-0 bg-[radial-gradient(#6B3E2F_1px,transparent_1px)] [background-size:30px_30px] opacity-10"></div>
-                    <div class="text-center z-10">
-                        <div class="mx-auto w-6 h-6 bg-red-500 rounded-full flex items-center justify-center shadow-[0_0_0_8px_rgba(220,38,38,0.3)]">
-                            <div class="w-2 h-2 bg-white rounded-full"></div>
-                        </div>
-                        <div class="mt-6 text-xs font-medium text-[#3F2A22]">38 Moo 5, Suthep</div>
-                        <div class="text-[10px] text-[#8a6645]">Chiang Mai, Thailand</div>
-                    </div>
-                    <div class="absolute bottom-6 left-6 bg-white shadow text-xs px-4 py-3 rounded-3xl">
-                        <i class="fa-solid fa-car text-emerald-500"></i>
-                        <span class="ml-2 font-medium">12 min walk from CMU</span>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-4 text-sm">
-                    <button onclick="hideLocationModal();alert('Opening Google Maps... (demo)');" 
-                            class="border border-[#6B3E2F] text-[#6B3E2F] py-6 rounded-3xl font-medium flex items-center justify-center gap-x-2">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                        <span>DIRECTIONS</span>
-                    </button>
-                    <button onclick="hideLocationModal()" 
-                            class="bg-[#6B3E2F] text-white py-6 rounded-3xl font-medium">CLOSE</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- INTERACTIVE JAVASCRIPT -->
     <script>
-        function initializeTailwind() {
-            tailwind.config = {
-                content: [],
-                theme: {
-                    extend: {}
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Menu Tab Switcher
+        function switchTab(category) {
+            const tabs = document.querySelectorAll('.menu-tab-btn');
+            const contents = document.querySelectorAll('.menu-content');
+
+            tabs.forEach(tab => {
+                if(tab.dataset.target === category) {
+                    tab.classList.remove('bg-white', 'text-forest-800');
+                    tab.classList.add('bg-forest-900', 'text-amberwood-300', 'shadow-sm');
+                } else {
+                    tab.classList.remove('bg-forest-900', 'text-amberwood-300', 'shadow-sm');
+                    tab.classList.add('bg-white', 'text-forest-800');
                 }
-            }
-        }
-        
-        let cart = []
-        
-        function addToCart(el) {
-            const title = el.querySelector('.font-semibold').innerText
-            const priceText = el.querySelector('.text-xs.px-3').innerText
-            const price = parseInt(priceText.replace('฿', ''))
-            
-            cart.push({
-                id: Date.now(),
-                title: title,
-                price: price
-            })
-            
-            updateCartCount()
-            
-            // brief animation
-            const origTransform = el.style.transform
-            el.style.transitionDuration = '80ms'
-            el.style.transform = 'scale(0.95)'
-            
-            setTimeout(() => {
-                el.style.transform = origTransform
-                el.style.transitionDuration = '400ms'
-            }, 120)
-            
-            // toast
-            showToast(`Added ${title} • ฿${price}`)
-        }
-        
-        function updateCartCount() {
-            const countEl = document.getElementById('cart-count')
-            countEl.textContent = cart.length
-        }
-        
-        function toggleCart() {
-            const backdrop = document.getElementById('cart-backdrop')
-            const drawer = document.getElementById('cart-drawer')
-            
-            if (backdrop.classList.contains('hidden')) {
-                backdrop.classList.remove('hidden')
-                setTimeout(() => {
-                    drawer.style.transform = 'translateX(0)'
-                }, 10)
-                renderCart()
-            } else {
-                drawer.style.transform = 'translateX(100%)'
-                setTimeout(() => {
-                    backdrop.classList.add('hidden')
-                }, 400)
-            }
-        }
-        
-        function renderCart() {
-            const container = document.getElementById('cart-items')
-            container.innerHTML = ''
-            
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="h-full flex flex-col justify-center items-center text-center py-12 text-[#b89f7f]">
-                        <i class="fa-solid fa-mug-hot text-6xl mb-6 opacity-30"></i>
-                        <div class="font-medium">Your cart is empty</div>
-                        <div class="text-xs mt-3 max-w-[160px]">When you add items from our menu, they will appear here</div>
-                    </div>
-                `
-                document.getElementById('cart-subtotal').innerText = '฿0'
-                document.getElementById('cart-total').innerText = '฿15'
-                return
-            }
-            
-            let subtotal = 0
-            
-            cart.forEach((item, index) => {
-                subtotal += item.price
-                
-                const itemHTML = `
-                <div class="flex gap-4">
-                    <div class="flex-1">
-                        <div class="font-medium text-sm">${item.title}</div>
-                        <div class="text-xs text-[#b89f7f]">฿${item.price}</div>
-                    </div>
-                    <div onclick="removeFromCart(${index}); event.stopImmediatePropagation()" 
-                         class="w-6 h-6 flex items-center justify-center text-[#c9a17e] hover:text-red-400 cursor-pointer text-xl leading-none">×</div>
-                </div>`
-                
-                container.innerHTML += itemHTML
-            })
-            
-            document.getElementById('cart-subtotal').innerText = `฿${subtotal}`
-            document.getElementById('cart-total').innerText = `฿${subtotal + 15}`
-        }
-        
-        function removeFromCart(index) {
-            cart.splice(index, 1)
-            updateCartCount()
-            renderCart()
-        }
-        
-        function checkout() {
-            if (cart.length === 0) return
-            toggleCart()
-            setTimeout(() => {
-                showToast('Thank you! Your order has been placed (demo)', 3500)
-                cart = []
-                updateCartCount()
-            }, 800)
-        }
-        
-        function showToast(message, timeout = 2200) {
-            let toast = document.createElement('div')
-            toast.style.position = 'fixed'
-            toast.style.bottom = '30px'
-            toast.style.left = '50%'
-            toast.style.transform = 'translateX(-50%)'
-            toast.style.backgroundColor = '#3F2A22'
-            toast.style.color = '#f5d9b0'
-            toast.style.padding = '16px 28px'
-            toast.style.borderRadius = '9999px'
-            toast.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.2)'
-            toast.style.zIndex = '99999'
-            toast.style.whiteSpace = 'nowrap'
-            toast.style.opacity = '0'
-            toast.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-            toast.innerHTML = message
-            document.body.appendChild(toast)
-            
-            // trigger animation
-            setTimeout(() => {
-                toast.style.opacity = '1'
-                toast.style.transform = 'translateX(-50%) translateY(-10px)'
-            }, 10)
-            
-            setTimeout(() => {
-                toast.style.opacity = '0'
-                toast.style.transform = 'translateX(-50%)'
-                
-                setTimeout(() => {
-                    toast.remove()
-                }, 400)
-            }, timeout)
-        }
-        
-        function showContactModal() {
-            document.getElementById('modal-backdrop').classList.remove('hidden')
-            document.getElementById('modal-backdrop').style.opacity = 1
-        }
-        
-        function hideContactModal() {
-            const modal = document.getElementById('modal-backdrop')
-            modal.style.opacity = 0
-            setTimeout(() => {
-                modal.classList.add('hidden')
-            }, 300)
-        }
-        
-        function showLocationModal() {
-            document.getElementById('location-modal').classList.remove('hidden')
-        }
-        
-        function hideLocationModal() {
-            const modal = document.getElementById('location-modal')
-            modal.classList.add('hidden')
-        }
-        
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu')
-            menu.classList.toggle('hidden')
-        }
-        
-        function smoothScrollTo(section) {
-            let targetSection
-            if (section === 'overview') {
-                targetSection = document.getElementById('overview')
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                })
-                return
-            } 
-            else if (section === 'menu') targetSection = document.getElementById('menu')
-            else if (section === 'reviews') targetSection = document.getElementById('reviews')
-            else if (section === 'photos') targetSection = document.getElementById('photos')
-            else if (section === 'about') targetSection = document.getElementById('about')
-            
-            if (targetSection) {
-                const navHeight = 80
-                const elementPosition = targetSection.getBoundingClientRect().top
-                const offsetPosition = elementPosition + window.scrollY - navHeight
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                })
-            }
-            
-            // close mobile menu if open
-            const mobileMenu = document.getElementById('mobile-menu')
-            if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden')
-        }
-        
-        function viewFullMenu() {
-            showToast('Full menu would open in a new tab (demo)', 1800)
-        }
-        
-        function showAllReviews() {
-            showToast('All 64 reviews would be displayed here (demo)', 2000)
-        }
-        
-        function viewAllPhotos() {
-            showToast('Redirecting to Instagram @chimchill.coffee (demo)', 2200)
-        }
-        
-        function fakeSocial(network) {
-            showToast(`Opening ${network}... (demo)`, 1300)
-        }
-        
-        function fakeWhatsApp() {
-            hideContactModal()
-            setTimeout(() => {
-                showToast('Opening WhatsApp chat (demo)', 2400)
-            }, 400)
-        }
-        
-        function handleScrollProgress() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
-            const scrolled = (winScroll / height) * 100
-            document.getElementById("progress-bar").style.width = scrolled + "%"
-        }
-        
-        function createFloatingCoffee() {
-            const colors = ['#d9b38a', '#c9a17e', '#6B3E2F']
-            
-            setInterval(() => {
-                if (Math.random() > 0.6) {
-                    const bean = document.createElement('div')
-                    bean.textContent = '🫘'
-                    bean.style.position = 'fixed'
-                    bean.style.zIndex = '10'
-                    bean.style.fontSize = (18 + Math.random() * 26) + 'px'
-                    bean.style.left = Math.random() * 100 + 'vw'
-                    bean.style.top = '-50px'
-                    bean.style.opacity = Math.random() * 0.3 + 0.1
-                    bean.style.transition = `transform ${8 + Math.random() * 12}s linear, opacity 10s linear`
-                    document.body.append(bean)
-                    
-                    const rot = Math.random() * 800 - 200
-                    
-                    setTimeout(() => {
-                        bean.style.transform = `translateY(${window.innerHeight + 200}px) rotate(${rot}deg)`
-                    }, 50)
-                    
-                    setTimeout(() => {
-                        bean.remove()
-                    }, 15000)
+            });
+
+            contents.forEach(content => {
+                if(content.id === `tab-${category}`) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
                 }
-            }, 340)
+            });
         }
-        
-        // keyboard shortcuts
-        function handleKeys(e) {
-            if (e.metaKey && e.key === "k") {
-                e.preventDefault()
-                toggleCart()
-            }
-        }
-        
-        function simulateLiveReview() {
-            setTimeout(() => {
-                if (Math.random() > 0.7) {
-                    showToast('New review received: “Love this place!” ★★★★★', 2800)
-                }
-            }, 6500)
-        }
-        
-        // Main initialization
-        function initialize() {
-            initializeTailwind()
-            
-            // Tailwind script run
-            console.log('%cChim Chill Coffee & Food website ready ☕', 'font-family:monospace;color:#6B3E2F;font-size:10px')
-            
-            // scroll progress
-            window.addEventListener('scroll', handleScrollProgress)
-            
-            // keyboard
-            document.addEventListener('keydown', handleKeys)
-            
-            // demo: add a random item to cart after some time
-            setTimeout(() => {
-                const demoItems = document.querySelectorAll('.menu-card')
-                if (demoItems.length > 1) {
-                    // don't actually click, just simulate
-                    cart.push({
-                        id: 9923,
-                        title: "Oat Milk Latte",
-                        price: 95
-                    })
-                    updateCartCount()
-                }
-            }, 2200)
-            
-            // create floating beans
-            createFloatingCoffee()
-            
-            // simulate live updates
-            simulateLiveReview()
-            
-            // make all images unselectable
-            const images = document.querySelectorAll('img')
-            images.forEach(img => {
-                img.setAttribute('draggable', 'false')
-            })
-            
-            // demo order button pulse
-            const orderButtons = document.querySelectorAll('button')
-            orderButtons.forEach((btn, i) => {
-                if (btn.textContent.includes('BROWSE MENU')) {
-                    btn.classList.add('animate-pulse')
-                    setTimeout(() => {
-                        btn.classList.remove('animate-pulse')
-                    }, 4200)
-                }
-            })
-            
-            // pre-load a couple of cart items for realism
-            setTimeout(() => {
-                if (cart.length === 0) {
-                    cart = [
-                        { id: 881, title: "Avocado Sourdough", price: 140 },
-                        { id: 882, title: "Iced Oat Latte", price: 95 }
-                    ]
-                    updateCartCount()
-                }
-            }, 1400)
-            
-            // make nav links active on scroll
-            window.addEventListener('scroll', () => {
-                const sections = ['overview', 'menu', 'reviews', 'photos', 'about']
-                const scrollY = window.scrollY + 200
-                
-                for (let i = sections.length - 1; i >= 0; i--) {
-                    const section = document.getElementById(sections[i])
-                    if (!section) continue
-                    
-                    if (scrollY >= section.offsetTop) {
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.style.fontWeight = '400'
-                            if (link.getAttribute('href') === '#' + sections[i]) {
-                                link.style.fontWeight = '600'
-                            }
-                        })
-                        break
-                    }
-                }
-            })
-            
-            // final polish: click anywhere on hero to scroll to menu
-            const hero = document.querySelector('header')
-            hero.style.cursor = 'pointer'
-            hero.addEventListener('click', function handler(e) {
-                if (e.target.tagName === "BUTTON" || e.target.closest('button')) return
-                smoothScrollTo('menu')
-            })
-            
-            // keyboard hint
-            console.log('%cPress CMD + K to open the cart 🛒', 'font-size:9px;color:#c9a17e')
-        }
-        
-        // Boot app
-        window.onload = initialize
     </script>
 </body>
 </html>
